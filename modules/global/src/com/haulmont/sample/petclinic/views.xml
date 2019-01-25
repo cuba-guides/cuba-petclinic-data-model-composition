@@ -14,9 +14,11 @@
     </view>
     <view class="com.haulmont.sample.petclinic.entity.owner.Owner"
           extends="_local"
-          name="owner-with-pets">
+          name="owner-with-pets-and-addresses">
         <property name="pets"
                   view="_minimal"/>
+        <property name="addresses"
+                  view="_local" />
     </view>
     <view class="com.haulmont.sample.petclinic.entity.pet.Pet"
           extends="_local"
@@ -25,5 +27,8 @@
                   view="_minimal"/>
         <property name="owner"
                   view="_local"/>
+    </view>
+    <view entity="petclinic_Address" name="address-with-owner" extends="_local">
+        <property name="owner" view="_minimal"/>
     </view>
 </views>

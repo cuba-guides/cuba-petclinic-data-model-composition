@@ -88,7 +88,7 @@ pet
           <y:NodeLabel alignment="left" autoSizePolicy="content" borderDistance="20.0" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.48828125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="bl" textColor="#6E6E6E" verticalTextPosition="bottom" visible="false" width="65.099609375" x="20.0" xml:space="preserve" y="75.51171874999994">   Airport</y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel xml:space="preserve">name
-address
+street
 city
 postcode
 pets

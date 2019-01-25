@@ -46,8 +46,6 @@ create table PETCLINIC_OWNER (
     FIRST_NAME varchar(255) not null,
     LAST_NAME varchar(255),
     --
-    ADDRESS varchar(255) not null,
-    CITY varchar(255) not null,
     EMAIL varchar(255),
     TELEPHONE varchar(255),
     --
@@ -110,3 +108,25 @@ create table PETCLINIC_VET_SPECIALTY_LINK (
     primary key (VET_ID, SPECIALTY_ID)
 )^
 -- end PETCLINIC_VET_SPECIALTY_LINK
+-- begin PETCLINIC_ADDRESS
+create table PETCLINIC_ADDRESS (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    NAME varchar(255),
+    --
+    STREET varchar(255),
+    POSTCODE varchar(255),
+    CITY varchar(255),
+    OWNER_ID varchar(36) not null,
+    HOUSENUMBER integer,
+    HOUSENUMBER_SUFFIX varchar(4),
+    --
+    primary key (ID)
+)^
+-- end PETCLINIC_ADDRESS

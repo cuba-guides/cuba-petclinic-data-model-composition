@@ -6,7 +6,7 @@
     <data readOnly="true">
         <collection id="ownersDc"
                     class="com.haulmont.sample.petclinic.entity.owner.Owner"
-                    view="owner-with-pets">
+                    view="owner-with-pets-and-addresses">
             <loader id="ownersDl">
                 <query>
                     <![CDATA[select e from petclinic_Owner e]]>
@@ -34,8 +34,6 @@
             <columns>
                 <column id="firstName"/>
                 <column id="lastName"/>
-                <column id="address"/>
-                <column id="city"/>
                 <column id="telephone"/>
                 <column id="email"/>
             </columns>

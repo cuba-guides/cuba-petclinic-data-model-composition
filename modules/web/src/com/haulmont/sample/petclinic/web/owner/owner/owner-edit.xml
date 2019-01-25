@@ -1,32 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://editorCaption"
-        focusComponent="fieldGroup"
-        messagesPack="com.haulmont.sample.petclinic.web.pet.pet">
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.owner.owner">
     <data>
         <instance id="ownerDc"
                   class="com.haulmont.sample.petclinic.entity.owner.Owner"
-                  view="_base">
+                  view="owner-with-pets-and-addresses">
             <loader/>
+            <collection id="petsDc" property="pets"/>
+            <collection id="addressesDc" property="addresses"/>
         </instance>
-
     </data>
-
     <dialogMode height="600"
                 width="800"/>
+    <layout expand="petsBox" spacing="true">
 
-    <layout expand="editActions" spacing="true">
-        <form id="fieldGroup" dataContainer="ownerDc">
-            <column width="250px">
-                <textField property="firstName"/>
-                <textField property="lastName"/>
-                <textField property="address"/>
-                <textField property="city"/>
-                <textField property="telephone"/>
-                <textField property="email"/>
-            </column>
-        </form>
+        <hbox spacing="true" height="200px" width="100%">
+            <groupBox id="generalBox"
+                      height="100%"
+                      width="100%"
+                      caption="msg://general"
+                      stylename="light">
+                <form id="form" dataContainer="ownerDc" width="AUTO">
+                    <column width="250px">
+                        <textField id="firstNameField" property="firstName"/>
+                        <textField id="lastNameField" property="lastName"/>
+                        <textField id="emailField" property="email"/>
+                        <textField id="telephoneField" property="telephone"/>
+                    </column>
+                </form>
+            </groupBox>
 
+            <groupBox id="addressesBox"
+                      height="100%"
+                      width="100%"
+                      expand="addressesTable"
+                      caption="msg://com.haulmont.sample.petclinic.entity.owner/Owner.addresses"
+                      stylename="light">
+                <table id="addressesTable" dataContainer="addressesDc" width="100%">
+                    <actions>
+                        <action id="create" type="create" openType="DIALOG"/>
+                        <action id="edit" type="edit" openType="DIALOG"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="street"/>
+                        <column id="city"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="addressesTable.create"/>
+                        <button action="addressesTable.edit"/>
+                        <button action="addressesTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </hbox>
+
+        <groupBox id="petsBox" caption="msg://com.haulmont.sample.petclinic.entity.owner/Owner.pets" stylename="light">
+            <table id="petsTable" dataContainer="petsDc" width="100%" height="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="identificationNumber"/>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="petsTable.create"/>
+                    <button action="petsTable.edit"/>
+                    <button action="petsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
 
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
