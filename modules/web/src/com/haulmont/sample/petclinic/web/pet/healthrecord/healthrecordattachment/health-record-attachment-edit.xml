@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.pet.healthrecord.healthrecordattachment">
+    <data>
+        <instance id="healthRecordAttachmentDc"
+                  class="com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecordAttachment"
+                  view="health-record-attachment-with-file">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="healthRecordAttachmentDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+                <lookupField id="typeField" property="type"/>
+                <dateField id="attachmentDateField" property="attachmentDate"/>
+                <dateField id="receiveDateField" property="receiveDate"/>
+                <checkBox id="handedOutField" property="handedOut"/>
+                <dateField id="handedOutDateField" property="handedOutDate"/>
+                <upload id="fileField" fileStoragePutMode="IMMEDIATE" property="file" showFileName="true"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

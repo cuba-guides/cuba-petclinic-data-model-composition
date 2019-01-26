@@ -23,7 +23,7 @@
                       caption="msg://general"
                       stylename="light">
                 <form id="form" dataContainer="ownerDc" width="AUTO">
-                    <column width="250px">
+                    <column width="300px">
                         <textField id="firstNameField" property="firstName"/>
                         <textField id="lastNameField" property="lastName"/>
                         <textField id="emailField" property="email"/>

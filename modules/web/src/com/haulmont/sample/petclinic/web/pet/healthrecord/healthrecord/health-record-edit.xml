@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.pet.healthrecord.healthrecord">
+    <data>
+        <instance id="healthRecordDc"
+                  class="com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecord"
+                  view="health-record-with-attachments">
+            <loader/>
+            <collection id="attachmentsDc" property="attachments"/>
+        </instance>
+        <collection id="responsibleVetsDc" class="com.haulmont.sample.petclinic.entity.vet.Vet" view="_minimal">
+            <loader id="responsibleVetsLc">
+                <query><![CDATA[select e from petclinic_Vet e]]></query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="healthRecordDc">
+            <column width="250px">
+                <dateField id="recordDateField" property="recordDate"/>
+                <pickerField id="visitField" property="visit">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+            <column width="250px">
+                <lookupPickerField id="responsibleVetField" optionsContainer="responsibleVetsDc"
+                                   property="responsibleVet">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                    </actions>
+                </lookupPickerField>
+                <textField id="responsibleNurseField" property="responsibleNurse"/>
+            </column>
+        </form>
+        <tabSheet id="notesTabSheet" width="100%" height="250px">
+            <tab id="adminissionNoteTab"
+                 caption="msg://com.haulmont.sample.petclinic.entity.pet.healthrecord/HealthRecord.adminissionNote"
+                 spacing="true" margin="true">
+                <richTextArea id="adminissionNoteField" dataContainer="healthRecordDc" property="adminissionNote" width="100%" height="100%"/>
+            </tab>
+            <tab id="progessNoteTab"
+                 caption="msg://com.haulmont.sample.petclinic.entity.pet.healthrecord/HealthRecord.progressNote"
+                 spacing="true" margin="true">
+                <richTextArea id="progessNoteField" dataContainer="healthRecordDc" property="progressNote" width="100%" height="100%"/>
+            </tab>
+            <tab id="operativeNoteTab"
+                 caption="msg://com.haulmont.sample.petclinic.entity.pet.healthrecord/HealthRecord.operativeNote"
+                 spacing="true" margin="true">
+                <richTextArea id="operativeNoteField" dataContainer="healthRecordDc" property="operativeNote" width="100%" height="100%"/>
+            </tab>
+            <tab id="postoperativeNoteTab"
+                 caption="msg://com.haulmont.sample.petclinic.entity.pet.healthrecord/HealthRecord.postoperativeNote"
+                 spacing="true" margin="true">
+                <richTextArea id="postoperativeNoteField" dataContainer="healthRecordDc" property="postoperativeNote" width="100%" height="100%"/>
+            </tab>
+        </tabSheet>
+        <groupBox id="attachmentsBox"
+                  caption="msg://com.haulmont.sample.petclinic.entity.pet.healthrecord/HealthRecord.attachments"
+                  stylename="light"
+        >
+            <table id="attachmentsTable" dataContainer="attachmentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="attachmentDate"/>
+                    <column id="type"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="attachmentsTable.create"/>
+                    <button action="attachmentsTable.edit"/>
+                    <button action="attachmentsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

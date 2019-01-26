@@ -6,8 +6,9 @@
     <data>
         <instance id="petDc"
                   class="com.haulmont.sample.petclinic.entity.pet.Pet"
-                  view="pet-with-owner-and-type">
+                  view="pet-with-owner-and-type-and-health-records">
             <loader/>
+            <collection id="healthRecordsDc" property="healthRecords" />
         </instance>
 
         <collection id="ownersDc" class="com.haulmont.sample.petclinic.entity.owner.Owner" view="_base">
@@ -30,7 +31,7 @@
     <dialogMode height="600"
                 width="800"/>
 
-    <layout expand="editActions" spacing="true">
+    <layout expand="healthRecordsBox" spacing="true">
         <form id="fieldGroup" dataContainer="petDc">
             <column width="250px">
                 <textField property="name"/>
@@ -40,6 +41,26 @@
                 <lookupPickerField property="owner" optionsContainer="ownersDc"/>
             </column>
         </form>
+
+
+        <groupBox id="healthRecordsBox" caption="msg://com.haulmont.sample.petclinic.entity.pet/Pet.healthRecords" stylename="light">
+            <table id="healthRecordsTable" dataContainer="healthRecordsDc" width="100%" height="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="recordDate"/>
+                    <column id="responsibleNurse"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="healthRecordsTable.create"/>
+                    <button action="healthRecordsTable.edit"/>
+                    <button action="healthRecordsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
 
 
         <hbox id="editActions" spacing="true">

@@ -1,23 +1,21 @@
 package com.haulmont.sample.petclinic.entity.pet;
 
-import com.haulmont.sample.petclinic.entity.owner.Owner;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import com.haulmont.sample.petclinic.entity.NamedEntity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.persistence.UniqueConstraint;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import com.haulmont.sample.petclinic.entity.NamedEntity;
+import com.haulmont.sample.petclinic.entity.owner.Owner;
+import com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecord;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+import java.util.List;
 
 @NamePattern("%s - %s|identificationNumber,name")
 @Table(name = "PETCLINIC_PET", uniqueConstraints = {
-    @UniqueConstraint(name = "IDX_PETCLINIC_PET_ID_UNQ", columnNames = {"IDENTIFICATION_NUMBER", "DELETE_TS"})
+        @UniqueConstraint(name = "IDX_PETCLINIC_PET_ID_UNQ", columnNames = {"IDENTIFICATION_NUMBER", "DELETE_TS"})
 })
 @Entity(name = "petclinic_Pet")
 public class Pet extends NamedEntity {
@@ -38,6 +36,19 @@ public class Pet extends NamedEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OWNER_ID")
     protected Owner owner;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "pet")
+    protected List<HealthRecord> healthRecords;
+
+    public List<HealthRecord> getHealthRecords() {
+        return healthRecords;
+    }
+
+    public void setHealthRecords(List<HealthRecord> healthRecords) {
+        this.healthRecords = healthRecords;
+    }
 
 
     public void setIdentificationNumber(String identificationNumber) {

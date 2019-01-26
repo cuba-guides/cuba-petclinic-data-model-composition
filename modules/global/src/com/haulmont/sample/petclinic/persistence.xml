@@ -10,5 +10,7 @@
         <class>com.haulmont.sample.petclinic.entity.vet.Specialty</class>
         <class>com.haulmont.sample.petclinic.entity.visit.Visit</class>
         <class>com.haulmont.sample.petclinic.entity.owner.Address</class>
+        <class>com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecord</class>
+        <class>com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecordAttachment</class>
     </persistence-unit>
 </persistence>

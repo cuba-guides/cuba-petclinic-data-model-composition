@@ -130,3 +130,50 @@ create table PETCLINIC_ADDRESS (
     primary key (ID)
 )^
 -- end PETCLINIC_ADDRESS
+-- begin PETCLINIC_HEALTH_RECORD
+create table PETCLINIC_HEALTH_RECORD (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    RECORD_DATE date not null,
+    RESPONSIBLE_VET_ID varchar(36) not null,
+    RESPONSIBLE_NURSE varchar(255) not null,
+    PET_ID varchar(36) not null,
+    VISIT_ID varchar(36),
+    ADMINISSION_NOTE longvarchar,
+    PROGRESS_NOTE longvarchar,
+    OPERATIVE_NOTE longvarchar,
+    POSTOPERATIVE_NOTE longvarchar,
+    --
+    primary key (ID)
+)^
+-- end PETCLINIC_HEALTH_RECORD
+-- begin PETCLINIC_HEALTH_RECORD_ATTACHMENT
+create table PETCLINIC_HEALTH_RECORD_ATTACHMENT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    NAME varchar(255),
+    --
+    TYPE_ varchar(50) not null,
+    ATTACHMENT_DATE date,
+    RECEIVE_DATE date,
+    HANDED_OUT boolean,
+    HANDED_OUT_DATE date,
+    FILE_ID varchar(36) not null,
+    HEALTH_RECORD_ID varchar(36) not null,
+    --
+    primary key (ID)
+)^
+-- end PETCLINIC_HEALTH_RECORD_ATTACHMENT
