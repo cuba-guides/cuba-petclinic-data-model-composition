@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.haulmont.sample.petclinic.web.employee.employee">
+    <data>
+        <instance id="employeeDc"
+                  class="com.haulmont.sample.petclinic.entity.employee.Employee"
+                  view="employee-with-employee-record-view">
+            <loader/>
+            <instance id="employeeRecordDc" property="employeeRecord"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="employeeDc">
+            <column width="250px">
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="lastNameField" property="lastName"/>
+                <dateField id="birthdateField" property="birthdate"/>
+                <pickerField id="employeeRecordField" property="employeeRecord">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

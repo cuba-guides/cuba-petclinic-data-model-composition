@@ -49,4 +49,7 @@
     <view entity="petclinic_HealthRecordAttachment" name="health-record-attachment-with-file" extends="_local">
         <property name="file" view="_minimal"/>
     </view>
+    <view entity="petclinic_Employee" name="employee-with-employee-record-view" extends="_local">
+        <property name="employeeRecord" view="_local"/>
+    </view>
 </views>

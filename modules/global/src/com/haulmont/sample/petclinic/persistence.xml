@@ -12,5 +12,7 @@
         <class>com.haulmont.sample.petclinic.entity.owner.Address</class>
         <class>com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecord</class>
         <class>com.haulmont.sample.petclinic.entity.pet.healthrecord.HealthRecordAttachment</class>
+        <class>com.haulmont.sample.petclinic.entity.employee.Employee</class>
+        <class>com.haulmont.sample.petclinic.entity.employee.EmployeeRecord</class>
     </persistence-unit>
 </persistence>

@@ -8,9 +8,13 @@
         <separator/>
         <item screen="petclinic_Visit.browse"/>
     </menu>
+    <menu id="application-management" insertBefore="administration">
+        <item screen="petclinic_Employee.browse"/>
+    </menu>
     <menu id="application-masterdata" insertBefore="administration">
         <item screen="petclinic_PetType.browse"/>
         <item screen="petclinic_Specialty.browse"/>
+
     </menu>
 
 </menu-config>
