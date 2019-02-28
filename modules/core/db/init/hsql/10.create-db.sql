@@ -209,6 +209,9 @@ create table PETCLINIC_EMPLOYEE_RECORD (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    PERSONELL_NUMBER integer not null,
+    AMOUNT_SICK_DAYS integer,
+    --
     primary key (ID)
 )^
 -- end PETCLINIC_EMPLOYEE_RECORD
