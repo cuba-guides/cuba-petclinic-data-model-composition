@@ -28,6 +28,10 @@
                     dataContainer="employeesDc">
             <actions>
                 <action id="create" type="create"/>
+                <action id="createSingleEditor"
+                        caption="msg://createSingleEditor"
+                        icon="ADD_ACTION"
+                />
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
@@ -40,6 +44,7 @@
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createBtn" action="employeesTable.create"/>
+                <button id="createSingleEditorBtn" action="employeesTable.createSingleEditor"/>
                 <button id="editBtn" action="employeesTable.edit"/>
                 <button id="removeBtn" action="employeesTable.remove"/>
             </buttonsPanel>

@@ -2,23 +2,33 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://editorCaption"
         focusComponent="form"
-        messagesPack="com.haulmont.sample.petclinic.web.employee.employeerecord">
+        messagesPack="com.haulmont.sample.petclinic.web.employee.employee">
     <data>
-        <instance id="employeeRecordDc"
-                  class="com.haulmont.sample.petclinic.entity.employee.EmployeeRecord"
-                  view="_local">
+        <instance id="employeeDc"
+                  class="com.haulmont.sample.petclinic.entity.employee.Employee"
+                  view="employee-with-employee-record-view">
             <loader/>
+            <instance id="employeeRecordDc" property="employeeRecord"/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="employeeRecordDc">
+        <hbox spacing="true">
+        <form id="form" dataContainer="employeeDc">
+            <column width="250px">
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="lastNameField" property="lastName"/>
+                <dateField id="birthdateField" property="birthdate"/>
+            </column>
+        </form>
+        <form id="employeeRecordForm" dataContainer="employeeRecordDc">
             <column width="250px">
                 <textField id="personellNumberField" property="personellNumber" datatype="int"/>
                 <textField id="amountSickDaysFild" property="amountSickDays" datatype="int"/>
             </column>
         </form>
+        </hbox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
