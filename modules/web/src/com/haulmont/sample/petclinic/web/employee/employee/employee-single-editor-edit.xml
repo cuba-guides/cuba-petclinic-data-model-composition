@@ -14,20 +14,28 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <hbox spacing="true">
-        <form id="form" dataContainer="employeeDc">
-            <column width="250px">
-                <textField id="firstNameField" property="firstName"/>
-                <textField id="lastNameField" property="lastName"/>
-                <dateField id="birthdateField" property="birthdate"/>
-            </column>
-        </form>
-        <form id="employeeRecordForm" dataContainer="employeeRecordDc">
-            <column width="250px">
-                <textField id="personellNumberField" property="personellNumber" datatype="int"/>
-                <textField id="amountSickDaysFild" property="amountSickDays" datatype="int"/>
-            </column>
-        </form>
+        <hbox spacing="true" height="150px">
+            <groupBox id="employeeGroupBox"
+                      caption="msg://com.haulmont.sample.petclinic.entity.employee/Employee"
+                      height="100%">
+                <form id="form" dataContainer="employeeDc">
+                    <column width="250px">
+                        <textField id="firstNameField" property="firstName"/>
+                        <textField id="lastNameField" property="lastName"/>
+                        <dateField id="birthdateField" property="birthdate"/>
+                    </column>
+                </form>
+            </groupBox>
+            <groupBox id="employeeRecordGroupBox"
+                      caption="msg://com.haulmont.sample.petclinic.entity.employee/EmployeeRecord"
+                      height="100%">
+                <form id="employeeRecordForm" dataContainer="employeeRecordDc">
+                    <column width="250px">
+                        <textField id="personellNumberField" property="personellNumber" datatype="int"/>
+                        <textField id="amountSickDaysFild" property="amountSickDays" datatype="int"/>
+                    </column>
+                </form>
+            </groupBox>
         </hbox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
